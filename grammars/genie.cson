@@ -1,144 +1,154 @@
-'scopeName': 'source.geanie'
-'name': 'Geanie'
+'scopeName': 'source.genie'
+'name': 'Genie'
 'fileTypes': [
   'gs'
 ]
-'firstLineMatch': '^#!/.*\\bpython[\\d\\.]*\\b'
+'firstLineMatch': '^#!/.*\\bgenie[\\d\\.]*\\b'
 'patterns': [
   {
-    'include': '#line_comments'
+    'include': '#comments-inline'
   }
   {
     'match': '\\b(?i:(0x\\h*)L)'
-    'name': 'constant.numeric.integer.long.hexadecimal.python'
+    'name': 'constant.numeric.integer.long.hexadecimal.genie'
   }
   {
     'match': '\\b(?i:(0x\\h*))'
-    'name': 'constant.numeric.integer.hexadecimal.python'
+    'name': 'constant.numeric.integer.hexadecimal.genie'
   }
   {
     'match': '\\b(?i:(0o?[0-7]+)L)'
-    'name': 'constant.numeric.integer.long.octal.python'
+    'name': 'constant.numeric.integer.long.octal.genie'
   }
   {
     'match': '\\b(?i:(0o?[0-7]+))'
-    'name': 'constant.numeric.integer.octal.python'
+    'name': 'constant.numeric.integer.octal.genie'
   }
   {
     'match': '\\b(?i:(0b[01]+)L)',
-    'name': 'constant.numeric.integer.long.binary.python'
+    'name': 'constant.numeric.integer.long.binary.genie'
   }
   {
     'match': '\\b(?i:(0b[01]+))',
-    'name': 'constant.numeric.integer.binary.python'
+    'name': 'constant.numeric.integer.binary.genie'
   }
   {
     'match': '\\b(?i:(((\\d+(\\.(?=[^a-zA-Z_])\\d*)?|(?<=[^0-9a-zA-Z_])\\.\\d+)(e[\\-\\+]?\\d+)?))J)'
-    'name': 'constant.numeric.complex.python'
+    'name': 'constant.numeric.complex.genie'
   }
   {
     'match': '\\b(?i:(\\d+\\.\\d*(e[\\-\\+]?\\d+)?))(?=[^a-zA-Z_])'
-    'name': 'constant.numeric.float.python'
+    'name': 'constant.numeric.float.genie'
   }
   {
     'match': '(?<=[^0-9a-zA-Z_])(?i:(\\.\\d+(e[\\-\\+]?\\d+)?))'
-    'name': 'constant.numeric.float.python'
+    'name': 'constant.numeric.float.genie'
   }
   {
     'match': '\\b(?i:(\\d+e[\\-\\+]?\\d+))'
-    'name': 'constant.numeric.float.python'
+    'name': 'constant.numeric.float.genie'
   }
   {
     'match': '\\b(?i:([1-9]+[0-9]*|0)L)'
-    'name': 'constant.numeric.integer.long.decimal.python'
+    'name': 'constant.numeric.integer.long.decimal.genie'
   }
   {
     'match': '\\b([1-9]+[0-9]*|0)'
-    'name': 'constant.numeric.integer.decimal.python'
+    'name': 'constant.numeric.integer.decimal.genie'
   }
   {
     'captures':
       '1':
-        'name': 'storage.modifier.global.python'
-    'match': '\\b(global)\\b'
+        'name': 'storage.modifier.unowned.genie'
+    'match': '\\b(unowned)\\b'
   }
   {
     'captures':
       '1':
-        'name': 'storage.modifier.nonlocal.python'
-    'match': '\\b(nonlocal)\\b'
+        'name': 'storage.modifier.static.genie'
+    'match': '\\b(static)\\b'
   }
   {
     'captures':
       '1':
-        'name': 'keyword.control.import.python'
-      '2':
-        'name': 'keyword.control.import.from.python'
-    'match': '\\b(?:(import)|(from))\\b'
+        'name': 'keyword.control.uses.genie'
+    'match': '\\b(?:(uses))\\b'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.init.genie'
+    'match': '\\b(?:(init))\\b'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.final.genie'
+    'match': '\\b(?:(final))\\b'
   }
   {
     'comment': 'keywords that delimit flow conditionals'
-    'name': 'keyword.control.conditional.python'
+    'name': 'keyword.control.conditional.genie'
     'match': '\\b(if|elif|else)\\b'
   }
   {
     'comment': 'keywords that delimit an exception'
-    'name': 'keyword.control.exception.python'
+    'name': 'keyword.control.exception.genie'
     'match': '\\b(except|finally|try|raise)\\b'
   }
   {
     'comment': 'keywords that delimit loops'
-    'name': 'keyword.control.repeat.python'
+    'name': 'keyword.control.repeat.genie'
     'match': '\\b(for|while)\\b'
   }
   {
     'comment': 'keywords that alter flow from within a block'
-    'name': 'keyword.control.statement.python'
+    'name': 'keyword.control.statement.genie'
     'match': '\\b(with|break|continue|pass|return|yield|await)\\b'
   }
   {
     'comment': 'keyword operators that evaluate to True or False'
     'match': '\\b(and|in|is|not|or)\\b'
-    'name': 'keyword.operator.logical.python'
+    'name': 'keyword.operator.logical.genie'
   }
   {
     'captures':
       '1':
-        'name': 'keyword.other.python'
+        'name': 'keyword.other.genie'
     'comment': 'keywords that haven\'t fit into other groups (yet).'
-    'match': '\\b(as|assert|del|exec|print)\\b'
+    'match': '\\b(as|assert|construct|del|delegate|exec|namespace|print)\\b'
   }
   {
     'match': '<>'
-    'name': 'invalid.deprecated.operator.python'
+    'name': 'invalid.deprecated.operator.genie'
   }
   {
     'match': '<\\=|>\\=|\\=\\=|<|>|\\!\\='
-    'name': 'keyword.operator.comparison.python'
+    'name': 'keyword.operator.comparison.genie'
   }
   {
     'match': '\\+\\=|-\\=|\\*\\=|/\\=|//\\=|%\\=|&\\=|\\|\\=|\\^\\=|>>\\=|<<\\=|\\*\\*\\='
-    'name': 'keyword.operator.assignment.augmented.python'
+    'name': 'keyword.operator.assignment.augmented.genie'
   }
   {
     'match': '\\+|\\-|\\*|\\*\\*|/|//|%|<<|>>|&|\\||\\^|~'
-    'name': 'keyword.operator.arithmetic.python'
+    'name': 'keyword.operator.arithmetic.genie'
   }
   {
     'match': '\\='
-    'name': 'keyword.operator.assignment.python'
+    'name': 'keyword.operator.assignment.genie'
   }
   {
     'begin': '^\\s*(class)\\s+(?=[a-zA-Z_][a-zA-Z_0-9]*\\s*\\:)'
     'beginCaptures':
       '1':
-        'name': 'storage.type.class.python'
-    'contentName': 'entity.name.type.class.python'
+        'name': 'storage.type.class.genie'
+    'contentName': 'entity.name.type.class.genie'
     'end': '\\s*(:)'
     'endCaptures':
       '1':
-        'name': 'punctuation.section.class.begin.python'
-    'name': 'meta.class.old-style.python'
+        'name': 'punctuation.section.class.begin.genie'
+    'name': 'meta.class.old-style.genie'
     'patterns': [
       {
         'include': '#entity_name_class'
@@ -149,20 +159,20 @@
     'begin': '^\\s*(class)\\s+(?=[a-zA-Z_][a-zA-Z_0-9]*\\s*\\()'
     'beginCaptures':
       '1':
-        'name': 'storage.type.class.python'
+        'name': 'storage.type.class.genie'
     'end': '(\\))\\s*(?:(\\:)|(.*$\\n?))'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.inheritance.end.python'
+        'name': 'punctuation.definition.inheritance.end.genie'
       '2':
-        'name': 'punctuation.section.class.begin.python'
+        'name': 'punctuation.section.class.begin.genie'
       '3':
-        'name': 'invalid.illegal.missing-section-begin.python'
-    'name': 'meta.class.python'
+        'name': 'invalid.illegal.missing-section-begin.genie'
+    'name': 'meta.class.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
-        'contentName': 'entity.name.type.class.python'
+        'contentName': 'entity.name.type.class.genie'
         'end': '(?![A-Za-z0-9_])'
         'patterns': [
           {
@@ -174,20 +184,20 @@
         'begin': '(\\()'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.inheritance.begin.python'
-        'contentName': 'meta.class.inheritance.python'
+            'name': 'punctuation.definition.inheritance.begin.genie'
+        'contentName': 'meta.class.inheritance.genie'
         'end': '(?=\\)|:)'
         'patterns': [
           {
             'begin': '(?<=\\(|,)\\s*'
-            'contentName': 'entity.other.inherited-class.python'
+            'contentName': 'entity.other.inherited-class.genie'
             'end': '\\s*(?:(,)|(?=\\)))'
             'endCaptures':
               '1':
-                'name': 'punctuation.separator.inheritance.python'
+                'name': 'punctuation.separator.inheritance.genie'
             'patterns': [
               {
-                'include': '$self'
+                'include': '$this'
               }
             ]
           }
@@ -199,18 +209,18 @@
     'begin': '^\\s*(class)\\s+(?=[a-zA-Z_][a-zA-Z_0-9])'
     'beginCaptures':
       '1':
-        'name': 'storage.type.class.python'
+        'name': 'storage.type.class.genie'
     'end': '(\\()|(\\s*$\\n?|#.*$\\n?)'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.inheritance.begin.python'
+        'name': 'punctuation.definition.inheritance.begin.genie'
       '2':
-        'name': 'invalid.illegal.missing-inheritance.python'
-    'name': 'meta.class.python'
+        'name': 'invalid.illegal.missing-inheritance.genie'
+    'name': 'meta.class.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
-        'contentName': 'entity.name.type.class.python'
+        'contentName': 'entity.name.type.class.genie'
         'end': '(?![A-Za-z0-9_])'
         'patterns': [
           {
@@ -221,23 +231,23 @@
     ]
   }
   {
-    'begin': '^\\s*(def)\\s+(?=[A-Za-z_][A-Za-z0-9_]*\\s*\\()'
+    'begin': '^\\s*(construct|def)\\s+(?=[A-Za-z_][A-Za-z0-9_]*\\s*\\()'
     'beginCaptures':
       '1':
-        'name': 'storage.type.function.python'
+        'name': 'storage.type.function.genie'
     'end': '(\\))\\s*(?:(\\:)|(.*$\\n?))'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.parameters.end.python'
+        'name': 'punctuation.definition.parameters.end.genie'
       '2':
-        'name': 'punctuation.section.function.begin.python'
+        'name': 'punctuation.section.function.begin.genie'
       '3':
-        'name': 'invalid.illegal.missing-section-begin.python'
-    'name': 'meta.function.python'
+        'name': 'invalid.illegal.missing-section-begin.genie'
+    'name': 'meta.function.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
-        'contentName': 'entity.name.function.python'
+        'contentName': 'entity.name.function.genie'
         'end': '(?![A-Za-z0-9_])'
         'patterns': [
           {
@@ -249,12 +259,12 @@
         'begin': '(\\()'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.parameters.begin.python'
-        'contentName': 'meta.function.parameters.python'
+            'name': 'punctuation.definition.parameters.begin.genie'
+        'contentName': 'meta.function.parameters.genie'
         'end': '(?=\\)\\s*\\:)'
         'patterns': [
           {
-            'include': '#line_comments'
+            'include': '#comments-inline'
           }
           {
             'include': '#keyword_arguments'
@@ -262,9 +272,9 @@
           {
             'captures':
               '1':
-                'name': 'variable.parameter.function.python'
+                'name': 'variable.parameter.function.genie'
               '2':
-                'name': 'punctuation.separator.parameters.python'
+                'name': 'punctuation.separator.parameters.genie'
             'match': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(?:(,)|(?=[\\n\\)]))'
           }
         ]
@@ -272,21 +282,21 @@
     ]
   }
   {
-    'begin': '^\\s*(def)\\s+(?=[A-Za-z_][A-Za-z0-9_]*)'
+    'begin': '^\\s*(construct|def)\\s+(?=[A-Za-z_][A-Za-z0-9_]*)'
     'beginCaptures':
       '1':
-        'name': 'storage.type.function.python'
+        'name': 'storage.type.function.genie'
     'end': '(\\()|\\s*($\\n?|#.*$\\n?)'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.parameters.begin.python'
+        'name': 'punctuation.definition.parameters.begin.genie'
       '2':
-        'name': 'invalid.illegal.missing-parameters.python'
-    'name': 'meta.function.python'
+        'name': 'invalid.illegal.missing-parameters.genie'
+    'name': 'meta.function.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*)'
-        'contentName': 'entity.name.function.python'
+        'contentName': 'entity.name.function.genie'
         'end': '(?![A-Za-z0-9_])'
         'patterns': [
           {
@@ -300,20 +310,20 @@
     'begin': '(lambda)(?=\\s+)'
     'beginCaptures':
       '1':
-        'name': 'storage.type.function.inline.python'
+        'name': 'storage.type.function.inline.genie'
     'end': '(\\:)'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.parameters.end.python'
+        'name': 'punctuation.definition.parameters.end.genie'
       '2':
-        'name': 'punctuation.section.function.begin.python'
+        'name': 'punctuation.section.function.begin.genie'
       '3':
-        'name': 'invalid.illegal.missing-section-begin.python'
-    'name': 'meta.function.inline.python'
+        'name': 'invalid.illegal.missing-section-begin.genie'
+    'name': 'meta.function.inline.genie'
     'patterns': [
       {
         'begin': '\\s+'
-        'contentName': 'meta.function.inline.parameters.python'
+        'contentName': 'meta.function.inline.parameters.genie'
         'end': '(?=\\:)'
         'patterns': [
           {
@@ -322,9 +332,9 @@
           {
             'captures':
               '1':
-                'name': 'variable.parameter.function.python'
+                'name': 'variable.parameter.function.genie'
               '2':
-                'name': 'punctuation.separator.parameters.python'
+                'name': 'punctuation.separator.parameters.genie'
             'match': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(?:(,)|(?=[\\n\\)\\:]))'
           }
         ]
@@ -337,15 +347,15 @@
     'end': '(\\))'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.end.python'
-    'name': 'meta.function.decorator.python'
+        'name': 'punctuation.definition.arguments.end.genie'
+    'name': 'meta.function.decorator.genie'
     'patterns': [
       {
         'begin': '(?=(@)\\s*[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\()'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.decorator.python'
-        'contentName': 'entity.name.function.decorator.python'
+            'name': 'punctuation.definition.decorator.genie'
+        'contentName': 'entity.name.function.decorator.genie'
         'end': '(?=\\s*\\()'
         'patterns': [
           {
@@ -357,15 +367,15 @@
         'begin': '(\\()'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.arguments.begin.python'
-        'contentName': 'meta.function.decorator.arguments.python'
+            'name': 'punctuation.definition.arguments.begin.genie'
+        'contentName': 'meta.function.decorator.arguments.genie'
         'end': '(?=\\))'
         'patterns': [
           {
             'include': '#keyword_arguments'
           }
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
@@ -373,15 +383,15 @@
   }
   {
     'begin': '^\\s*(?=@\\s*[A-Za-z_][A-Za-z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z_0-9]*)*)'
-    'contentName': 'entity.name.function.decorator.python'
+    'contentName': 'entity.name.function.decorator.genie'
     'end': '(?=\\s|$\\n?|#)'
-    'name': 'meta.function.decorator.python'
+    'name': 'meta.function.decorator.genie'
     'patterns': [
       {
         'begin': '(?=(@)\\s*[A-Za-z_][A-Za-z0-9_]*(\\.[A-Za-z_][A-Za-z0-9_]*)*)'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.decorator.python'
+            'name': 'punctuation.definition.decorator.genie'
         'end': '(?=\\s|$\\n?|#)'
         'patterns': [
           {
@@ -395,19 +405,19 @@
     'begin': '(?<=\\)|\\])\\s*(\\()'
     'beginCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.begin.python'
-    'contentName': 'meta.function-call.arguments.python'
+        'name': 'punctuation.definition.arguments.begin.genie'
+    'contentName': 'meta.function-call.arguments.genie'
     'end': '(\\))'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.end.python'
-    'name': 'meta.function-call.python'
+        'name': 'punctuation.definition.arguments.end.genie'
+    'name': 'meta.function-call.genie'
     'patterns': [
       {
         'include': '#keyword_arguments'
       }
       {
-        'include': '$self'
+        'include': '$this'
       }
     ]
   }
@@ -416,8 +426,8 @@
     'end': '(\\))'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.end.python'
-    'name': 'meta.function-call.python'
+        'name': 'punctuation.definition.arguments.end.genie'
+    'name': 'meta.function-call.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\()'
@@ -432,15 +442,15 @@
         'begin': '(\\()'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.arguments.begin.python'
-        'contentName': 'meta.function-call.arguments.python'
+            'name': 'punctuation.definition.arguments.begin.genie'
+        'contentName': 'meta.function-call.arguments.genie'
         'end': '(?=\\))'
         'patterns': [
           {
             'include': '#keyword_arguments'
           }
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
@@ -451,8 +461,8 @@
     'end': '(\\])'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.end.python'
-    'name': 'meta.item-access.python'
+        'name': 'punctuation.definition.arguments.end.genie'
+    'name': 'meta.item-access.genie'
     'patterns': [
       {
         'begin': '(?=[A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*\\s*\\[)'
@@ -467,12 +477,12 @@
         'begin': '(\\[)'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.arguments.begin.python'
-        'contentName': 'meta.item-access.arguments.python'
+            'name': 'punctuation.definition.arguments.begin.genie'
+        'contentName': 'meta.item-access.arguments.genie'
         'end': '(?=\\])'
         'patterns': [
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
@@ -482,29 +492,29 @@
     'begin': '(?<=\\)|\\])\\s+(\\[)'
     'beginCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.begin.python'
-    'contentName': 'meta.item-access.arguments.python'
+        'name': 'punctuation.definition.arguments.begin.genie'
+    'contentName': 'meta.item-access.arguments.genie'
     'end': '(\\])'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.arguments.end.python'
-    'name': 'meta.item-access.python'
+        'name': 'punctuation.definition.arguments.end.genie'
+    'name': 'meta.item-access.genie'
     'patterns': [
       {
-        'include': '$self'
+        'include': '$this'
       }
     ]
   }
   {
     'captures':
       '1':
-        'name': 'storage.type.function.python'
+        'name': 'storage.type.function.genie'
     'match': '\\b(def|lambda)\\b'
   }
   {
     'captures':
       '1':
-        'name': 'storage.type.class.python'
+        'name': 'storage.type.class.genie'
     'match': '\\b(class)\\b'
   }
   {
@@ -512,7 +522,7 @@
   }
   {
     'match': '\\b(None|True|False|Ellipsis|NotImplemented)\\b'
-    'name': 'constant.language.python'
+    'name': 'constant.language.genie'
   }
   {
     'include': '#string_quoted_single'
@@ -531,41 +541,41 @@
     'end': '(\\))'
     'patterns': [
       {
-        'include': '$self'
+        'include': '$this'
       }
     ]
   }
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.list.begin.python'
+        'name': 'punctuation.definition.list.begin.genie'
       '2':
-        'name': 'meta.empty-list.python'
+        'name': 'meta.empty-list.genie'
       '3':
-        'name': 'punctuation.definition.list.end.python'
+        'name': 'punctuation.definition.list.end.genie'
     'match': '(\\[)(\\s*(\\]))\\b'
   }
   {
     'begin': '(\\[)'
     'beginCaptures':
       '1':
-        'name': 'punctuation.definition.list.begin.python'
+        'name': 'punctuation.definition.list.begin.genie'
     'end': '(\\])'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.list.end.python'
-    'name': 'meta.structure.list.python'
+        'name': 'punctuation.definition.list.end.genie'
+    'name': 'meta.structure.list.genie'
     'patterns': [
       {
         'begin': '(?<=\\[|\\,)\\s*(?![\\],])'
-        'contentName': 'meta.structure.list.item.python'
+        'contentName': 'meta.structure.list.item.genie'
         'end': '\\s*(?:(,)|(?=\\]))'
         'endCaptures':
           '1':
-            'name': 'punctuation.separator.list.python'
+            'name': 'punctuation.separator.list.genie'
         'patterns': [
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
@@ -574,59 +584,59 @@
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.tuple.begin.python'
+        'name': 'punctuation.definition.tuple.begin.genie'
       '2':
-        'name': 'meta.empty-tuple.python'
+        'name': 'meta.empty-tuple.genie'
       '3':
-        'name': 'punctuation.definition.tuple.end.python'
+        'name': 'punctuation.definition.tuple.end.genie'
     'match': '(\\()(\\s*(\\)))'
-    'name': 'meta.structure.tuple.python'
+    'name': 'meta.structure.tuple.genie'
   }
   {
     'captures':
       '1':
-        'name': 'punctuation.definition.dictionary.begin.python'
+        'name': 'punctuation.definition.dictionary.begin.genie'
       '2':
-        'name': 'meta.empty-dictionary.python'
+        'name': 'meta.empty-dictionary.genie'
       '3':
-        'name': 'punctuation.definition.dictionary.end.python'
+        'name': 'punctuation.definition.dictionary.end.genie'
     'match': '(\\{)(\\s*(\\}))'
-    'name': 'meta.structure.dictionary.python'
+    'name': 'meta.structure.dictionary.genie'
   }
   {
     'begin': '(\\{)'
     'beginCaptures':
       '1':
-        'name': 'punctuation.definition.dictionary.begin.python'
+        'name': 'punctuation.definition.dictionary.begin.genie'
     'end': '(\\})'
     'endCaptures':
       '1':
-        'name': 'punctuation.definition.dictionary.end.python'
-    'name': 'meta.structure.dictionary.python'
+        'name': 'punctuation.definition.dictionary.end.genie'
+    'name': 'meta.structure.dictionary.genie'
     'patterns': [
       {
         'begin': '(?<=\\{|\\,|^)\\s*(?![\\},])'
-        'contentName': 'meta.structure.dictionary.key.python'
+        'contentName': 'meta.structure.dictionary.key.genie'
         'end': '\\s*(?:(?=\\})|(\\:))'
         'endCaptures':
           '1':
-            'name': 'punctuation.separator.valuepair.dictionary.python'
+            'name': 'punctuation.separator.valuepair.dictionary.genie'
         'patterns': [
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
       {
         'begin': '(?<=\\:|^)\\s*'
-        'contentName': 'meta.structure.dictionary.value.python'
+        'contentName': 'meta.structure.dictionary.value.genie'
         'end': '\\s*(?:(?=\\})|(,))'
         'endCaptures':
           '1':
-            'name': 'punctuation.separator.dictionary.python'
+            'name': 'punctuation.separator.dictionary.genie'
         'patterns': [
           {
-            'include': '$self'
+            'include': '$this'
           }
         ]
       }
@@ -636,22 +646,22 @@
 'repository':
   'builtin_exceptions':
     'match': '(?x)\\b(\n\t\t\t\t(\n\t\t\t\t\tArithmetic|Assertion|Attribute|BlockingIO|BrokenPipe|Buffer|ChildProcess|\n\t\t\t\t\tConnection(Aborted|Refused|Reset)?|EOF|Environment|FileExists|\n\t\t\t\t\tFileNotFound|FloatingPoint|Interrupted|IO|IsADirectoryError|\n\t\t\t\t\tImport|Indentation|Index|Key|Lookup|Memory|Name|NotADirectory|\n\t\t\t\t\tNotImplemented|OS|Overflow|Permission|ProcessLookup|Reference|\n\t\t\t\t\tRuntime|Standard|Syntax|System|Tab|Timeout|Type|UnboundLocal|\n\t\t\t\t\tUnicode(Encode|Decode|Translate)?|Value|VMS|Windows|ZeroDivision\n\t\t\t\t)Error|\n\t\t\t\t((Pending)?Deprecation|Runtime|Syntax|User|Future|Import|Unicode|Bytes)?Warning|\n\t\t\t\t(Base)?Exception|\n\t\t\t\tSystemExit|StopIteration|NotImplemented|KeyboardInterrupt|GeneratorExit\n\t\t\t)\\b'
-    'name': 'support.type.exception.python'
+    'name': 'support.type.exception.genie'
   'builtin_functions':
     'match': '(?x)\\b(__import__|abs|all|any|ascii|bin|bool|bytearray|bytes|callable|chr|classmethod|compile|complex|delattr|dict|dir|divmod|enumerate|eval|exec|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|isinstance|issubclass|iter|len|list|locals|map|max|memoryview|min|next|object|oct|open|ord|pow|print|property|range|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|vars|zip|file|long|raw_input|reduce|reload|unichr|unicode|xrange|apply|buffer|coerce|intern|execfile)\\b'
-    'name': 'support.function.builtin.python'
+    'name': 'support.function.builtin.genie'
   'builtin_types':
     'match': '(?x)\\b(\n\t\t\t\tbasestring|bool|buffer|bytearray|bytes|complex|dict|float|frozenset|int|\n\t\t\t\tlist|long|memoryview|object|range|set|slice|str|tuple|unicode|xrange\n\t\t\t)\\b'
-    'name': 'support.type.python'
+    'name': 'support.type.genie'
   'constant_placeholder':
     'match': '(?i:(%(\\([a-z_]+\\))?#?0?\\-?[ ]?\\+?([0-9]*|\\*)(\\.([0-9]*|\\*))?([hL][a-z]|[a-z%]))|(\\{([!\\[\\].:\\w ]+)?\\}))'
-    'name': 'constant.other.placeholder.python'
+    'name': 'constant.other.placeholder.genie'
   'docstrings':
     'patterns': [
       {
         'begin': '^\\s*(?=[uU]?[rR]?""")'
         'end': '(?<=""")'
-        'name': 'comment.block.python'
+        'name': 'comment.block.genie'
         'patterns': [
           {
             'include': '#string_quoted_double'
@@ -661,7 +671,7 @@
       {
         'begin': '^\\s*(?=[uU]?[rR]?\'\'\')'
         'end': '(?<=\'\'\')'
-        'name': 'comment.block.python'
+        'name': 'comment.block.genie'
         'patterns': [
           {
             'include': '#string_quoted_single'
@@ -669,20 +679,39 @@
         ]
       }
     ]
-  'line_comments':
-    'begin': '(^[ \\t]+)?(?=#)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.whitespace.comment.leading.python'
-    'end': '(?!\\G)'
+  'comments':
     'patterns': [
       {
-        'begin': '#'
-        'beginCaptures':
+        'captures':
           '0':
-            'name': 'punctuation.definition.comment.python'
-        'end': '\\n'
-        'name': 'comment.line.number-sign.python'
+            'name': 'punctuation.definition.comment.genie'
+        'match': '/\\*\\*/'
+        'name': 'comment.block.empty.genie'
+      }
+      {
+        'include': 'text.html.javadoc'
+      }
+      {
+        'include': '#comments-inline'
+      }
+    ]
+  'comments-inline':
+    'patterns': [
+      {
+        'begin': '/\\*'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.genie'
+        'end': '\\*/'
+        'name': 'comment.block.genie'
+      }
+      {
+        'captures':
+          '1':
+            'name': 'comment.line.double-slash.genie'
+          '2':
+            'name': 'punctuation.definition.comment.genie'
+        'match': '\\s*((//).*$\\n?)'
       }
     ]
   'dotted_name':
@@ -762,40 +791,40 @@
   'escaped_char':
     'captures':
       '1':
-        'name': 'constant.character.escape.hex.python'
+        'name': 'constant.character.escape.hex.genie'
       '2':
-        'name': 'constant.character.escape.octal.python'
+        'name': 'constant.character.escape.octal.genie'
       '3':
-        'name': 'constant.character.escape.newline.python'
+        'name': 'constant.character.escape.newline.genie'
       '4':
-        'name': 'constant.character.escape.backlash.python'
+        'name': 'constant.character.escape.backlash.genie'
       '5':
-        'name': 'constant.character.escape.double-quote.python'
+        'name': 'constant.character.escape.double-quote.genie'
       '6':
-        'name': 'constant.character.escape.single-quote.python'
+        'name': 'constant.character.escape.single-quote.genie'
       '7':
-        'name': 'constant.character.escape.bell.python'
+        'name': 'constant.character.escape.bell.genie'
       '8':
-        'name': 'constant.character.escape.backspace.python'
+        'name': 'constant.character.escape.backspace.genie'
       '9':
-        'name': 'constant.character.escape.formfeed.python'
+        'name': 'constant.character.escape.formfeed.genie'
       '10':
-        'name': 'constant.character.escape.linefeed.python'
+        'name': 'constant.character.escape.linefeed.genie'
       '11':
-        'name': 'constant.character.escape.return.python'
+        'name': 'constant.character.escape.return.genie'
       '12':
-        'name': 'constant.character.escape.tab.python'
+        'name': 'constant.character.escape.tab.genie'
       '13':
-        'name': 'constant.character.escape.vertical-tab.python'
+        'name': 'constant.character.escape.vertical-tab.genie'
     'match': '(\\\\x[0-9A-F]{2})|(\\\\[0-7]{3})|(\\\\\\n)|(\\\\\\\\)|(\\\\\\")|(\\\\\')|(\\\\a)|(\\\\b)|(\\\\f)|(\\\\n)|(\\\\r)|(\\\\t)|(\\\\v)'
   'escaped_unicode_char':
     'captures':
       '1':
-        'name': 'constant.character.escape.unicode.16-bit-hex.python'
+        'name': 'constant.character.escape.unicode.16-bit-hex.genie'
       '2':
-        'name': 'constant.character.escape.unicode.32-bit-hex.python'
+        'name': 'constant.character.escape.unicode.32-bit-hex.genie'
       '3':
-        'name': 'constant.character.escape.unicode.name.python'
+        'name': 'constant.character.escape.unicode.name.genie'
     'match': '(\\\\U[0-9A-Fa-f]{8})|(\\\\u[0-9A-Fa-f]{4})|(\\\\N\\{[a-zA-Z ]+\\})'
   'function_name':
     'patterns': [
@@ -821,48 +850,48 @@
   'generic_names':
     'match': '[A-Za-z_][A-Za-z0-9_]*'
   'illegal_names':
-    'match': '\\b(and|as|assert|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|nonlocal|not|or|pass|print|raise|return|try|while|with|yield|await)\\b'
-    'name': 'invalid.illegal.name.python'
+    'match': '\\b(and|as|assert|break|class|construct|continue|def|del|delegate|elif|else|except|exec|finally|final|for|if|import|in|init|is|lambda|static|namespace|not|or|pass|print|raise|return|try|unowned|uses|while|with|yield|await)\\b'
+    'name': 'invalid.illegal.name.genie'
   'keyword_arguments':
     'begin': '\\b([a-zA-Z_][a-zA-Z_0-9]*)\\s*(=)(?!=)'
     'beginCaptures':
       '1':
-        'name': 'variable.parameter.function.python'
+        'name': 'variable.parameter.function.genie'
       '2':
-        'name': 'keyword.operator.assignment.python'
+        'name': 'keyword.operator.assignment.genie'
     'end': '\\s*(?:(,)|(?=$\\n?|[\\)\\:]))'
     'endCaptures':
       '1':
-        'name': 'punctuation.separator.parameters.python'
+        'name': 'punctuation.separator.parameters.genie'
     'patterns': [
       {
-        'include': '$self'
+        'include': '$this'
       }
     ]
   'language_variables':
-    'match': '\\b(self|cls)\\b'
-    'name': 'variable.language.python'
+    'match': '\\b(this|cls)\\b'
+    'name': 'variable.language.genie'
   'line_continuation':
     'captures':
       '1':
-        'name': 'punctuation.separator.continuation.line.python'
+        'name': 'punctuation.separator.continuation.line.genie'
       '2':
-        'name': 'invalid.illegal.unexpected-text.python'
+        'name': 'invalid.illegal.unexpected-text.genie'
     'match': '(\\\\)(.*)$\\n?'
   'magic_function_names':
-    'comment': 'these methods have magic interpretation by python and are generally called indirectly through syntactic constructs'
+    'comment': 'these methods have magic interpretation by genie and are generally called indirectly through syntactic constructs'
     'match': '(?x)\\b(__(?:abs|add|and|bool|bytes|call|cmp|coerce|complex|contains|del|delattr|delete|delitem|delslice|dir|div|divmod|enter|eq|exit|float|floordiv|format|ge|get|getattr|getattribute|getitem|getslice|gt|hash|hex|iadd|iand|idiv|ifloordiv|ilshift|imatmul|imod|imul|index|init|instancecheck|int|invert|ior|ipow|irshift|isub|iter|itruediv|ixor|le|len|length_hint|long|lshift|lt|matmul|missing|mod|mul|ne|neg|next|new|nonzero|oct|or|pos|pow|radd|rand|rdiv|rdivmod|repr|reversed|rfloordiv|rlshift|rmatmul|rmod|rmul|ror|round|rpow|rrshift|rshift|rsub|rtruediv|rxor|set|setattr|setitem|setslice|str|sub|subclasscheck|truediv|unicode|xor)__)\\b'
-    'name': 'support.function.magic.python'
+    'name': 'support.function.magic.genie'
   'magic_variable_names':
     'comment': 'magic variables which a class/module may have.'
-    'match': '\\b__(all|annotations|bases|class|closure|code|debug|dict|doc|file|func|globals|kwdefaults|members|metaclass|methods|module|name|qualname|self|slots|weakref)__\\b'
-    'name': 'support.variable.magic.python'
+    'match': '\\b__(all|annotations|bases|class|closure|code|debug|dict|doc|file|func|globals|kwdefaults|members|metaclass|methods|module|name|qualname|this|slots|weakref)__\\b'
+    'name': 'support.variable.magic.genie'
   'regular_expressions':
     'comment': 'Changed disabled to 1 to turn off syntax highlighting in “r” strings.'
     'disabled': 0
     'patterns': [
       {
-        'include': 'source.regexp.python'
+        'include': 'source.regexp.genie'
       }
     ]
   'string_quoted_double':
@@ -871,17 +900,17 @@
         'begin': '([uU]r)(""")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode-raw string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.unicode-raw-regex.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.unicode-raw-regex.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -901,17 +930,17 @@
         'begin': '([uU]R)(""")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode-raw string without regular expression highlighting'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.unicode-raw.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.unicode-raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -928,17 +957,17 @@
         'begin': '(r)(""")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted raw string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.raw-regex.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.raw-regex.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -955,17 +984,17 @@
         'begin': '(R)(""")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted raw string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.raw.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -979,17 +1008,17 @@
         'begin': '([uU])(""")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted unicode string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.unicode.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.unicode.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1005,9 +1034,9 @@
       {
         'captures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
           '3':
             'patterns': [
               {'include': '#constant_placeholder'}
@@ -1016,28 +1045,28 @@
               {'include': '#regular_expressions'}
             ]
           '4':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
         'comment': 'double-quoted raw string'
         'match': '([uU]r)(")((?:[^"\\\\]|\\\\.)*)(")'
-        'name': 'string.quoted.double.single-line.unicode-raw-regex.python'
+        'name': 'string.quoted.double.single-line.unicode-raw-regex.genie'
       }
       {
         'begin': '([uU]R)(")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double-quoted raw string'
         'end': '((?<=")(")|")|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
+            'name': 'meta.empty-string.double.genie'
           '3':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.double.single-line.unicode-raw.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.double.single-line.unicode-raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1053,9 +1082,9 @@
       {
         'captures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
           '3':
             'patterns': [
               {'include': '#constant_placeholder'}
@@ -1063,28 +1092,28 @@
               {'include': '#regular_expressions'}
             ]
           '4':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
         'comment': 'double-quoted raw string'
         'match': '(r)(")((?:[^"\\\\]|\\\\.)*)(")'
-        'name': 'string.quoted.double.single-line.raw-regex.python'
+        'name': 'string.quoted.double.single-line.raw-regex.genie'
       }
       {
         'begin': '(R)(")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double-quoted raw string'
         'end': '((?<=")(")|")|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
+            'name': 'meta.empty-string.double.genie'
           '3':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.double.single-line.raw.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.double.single-line.raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1098,19 +1127,19 @@
         'begin': '([uU])(")'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted unicode string'
         'end': '((?<=")(")|")|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
+            'name': 'meta.empty-string.double.genie'
           '3':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.double.single-line.unicode.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.double.single-line.unicode.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1127,15 +1156,15 @@
         'begin': '(""")'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.sql.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.sql.genie'
         'patterns': [
           {
              'begin': '(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH))'
@@ -1158,17 +1187,17 @@
         'begin': '(")(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH))'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted string'
         'end': '((?<=")(")|")|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
+            'name': 'meta.empty-string.double.genie'
           '3':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.double.single-line.sql.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.double.single-line.sql.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1185,15 +1214,15 @@
         'begin': '(""")'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted string'
         'end': '((?<=""")(")""|""")'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
-        'name': 'string.quoted.double.block.python'
+            'name': 'meta.empty-string.double.genie'
+        'name': 'string.quoted.double.block.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1207,17 +1236,17 @@
         'begin': '(")'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'double quoted string'
         'end': '((?<=")(")|")|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.double.python'
+            'name': 'meta.empty-string.double.genie'
           '3':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.double.single-line.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.double.single-line.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1233,29 +1262,29 @@
       {
         'captures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
           '2':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '3':
-            'name': 'meta.empty-string.single.python'
+            'name': 'meta.empty-string.single.genie'
         'match': '(?<!\')(\')((\'))(?!\')'
-        'name': 'string.quoted.single.single-line.python'
+        'name': 'string.quoted.single.single-line.genie'
       }
       {
         'begin': '([uU]r)(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode-raw string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.unicode-raw-regex.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.unicode-raw-regex.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1275,17 +1304,17 @@
         'begin': '([uU]R)(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode-raw string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.unicode-raw.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.unicode-raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1302,17 +1331,17 @@
         'begin': '(r)(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted raw string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.raw-regex.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.raw-regex.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1329,17 +1358,17 @@
         'begin': '(R)(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted raw string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.raw.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1353,17 +1382,17 @@
         'begin': '([uU])(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.unicode.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.unicode.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1379,9 +1408,9 @@
       {
         'captures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
           '3':
             'patterns': [
               {'include': '#constant_placeholder'}
@@ -1390,26 +1419,26 @@
               {'include': '#regular_expressions'}
             ]
           '4':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
         'comment': 'single quoted raw string'
         'match': '([uU]r)(\')((?:[^\'\\\\]|\\\\.)*)(\')'
-        'name': 'string.quoted.single.single-line.unicode-raw-regex.python'
+        'name': 'string.quoted.single.single-line.unicode-raw-regex.genie'
       }
       {
         'begin': '([uU]R)(\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted raw string'
         'end': '(\')|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.single.single-line.unicode-raw.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.single.single-line.unicode-raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1425,9 +1454,9 @@
       {
         'captures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
           '3':
             'patterns': [
               {'include': '#constant_placeholder'}
@@ -1435,26 +1464,26 @@
               {'include': '#regular_expressions'}
             ]
           '4':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
         'comment': 'single quoted raw string'
         'match': '(r)(\')((?:[^\'\\\\]|\\\\.)*)(\')'
-        'name': 'string.quoted.single.single-line.raw-regex.python'
+        'name': 'string.quoted.single.single-line.raw-regex.genie'
       }
       {
         'begin': '(R)(\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted raw string'
         'end': '(\')|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.single.single-line.raw.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.single.single-line.raw.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1468,17 +1497,17 @@
         'begin': '([uU])(\')'
         'beginCaptures':
           '1':
-            'name': 'storage.type.string.python'
+            'name': 'storage.type.string.genie'
           '2':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted unicode string'
         'end': '(\')|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.single.single-line.unicode.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.single.single-line.unicode.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1495,15 +1524,15 @@
         'begin': '(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.sql.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.sql.genie'
         'patterns': [
           {
              'begin': '(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH))'
@@ -1526,15 +1555,15 @@
         'begin': '(\')(?=\\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|REPLACE|ALTER|WITH))'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted string'
         'end': '(\')|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.single.single-line.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.single.single-line.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1551,15 +1580,15 @@
         'begin': '(\'\'\')'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted string'
         'end': '((?<=\'\'\')(\')\'\'|\'\'\')'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'meta.empty-string.single.python'
-        'name': 'string.quoted.single.block.python'
+            'name': 'meta.empty-string.single.genie'
+        'name': 'string.quoted.single.block.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
@@ -1573,15 +1602,15 @@
         'begin': '(\')'
         'beginCaptures':
           '1':
-            'name': 'punctuation.definition.string.begin.python'
+            'name': 'punctuation.definition.string.begin.genie'
         'comment': 'single quoted string'
         'end': '(\')|(\\n)'
         'endCaptures':
           '1':
-            'name': 'punctuation.definition.string.end.python'
+            'name': 'punctuation.definition.string.end.genie'
           '2':
-            'name': 'invalid.illegal.unclosed-string.python'
-        'name': 'string.quoted.single.single-line.python'
+            'name': 'invalid.illegal.unclosed-string.genie'
+        'name': 'string.quoted.single.single-line.genie'
         'patterns': [
           {
             'include': '#constant_placeholder'
